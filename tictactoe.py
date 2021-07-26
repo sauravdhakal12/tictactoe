@@ -13,10 +13,6 @@ def initial_state():
     """
     Returns starting state of the board.
     """
-    # return [[O, EMPTY, X],
-    #         [X, X, O],
-    #         [EMPTY, O, EMPTY]]
-
     return [[EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
@@ -37,8 +33,6 @@ def player(board):
     #Find the turn
     if x_count > o_count:
         return O
-    # elif o_count > x_count:
-    #     return X
     else:
         return X
 
@@ -71,6 +65,9 @@ def result(board, action):
         tmp = []
         for j,col in enumerate(row):
             if x == i and y == j:
+                if col:
+                    raise Exception("Invalid Move")
+
                 tmp.append(turn)
             else:
                 tmp.append(col)
