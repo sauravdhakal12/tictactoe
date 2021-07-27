@@ -186,6 +186,11 @@ def max_value(board):
 
         #Get the value of the previous state
         value = min_value(result(board,action))
+        
+        #Alpha-Beta Pruning
+        if value == 1:
+            return ((action), value)
+        
         max_results.append((action, value[1]))
 
     #Return the best action
@@ -208,6 +213,11 @@ def min_value(board):
 
         #Get the value of the previous state
         value = max_value(result(board,action))
+        
+        #Alpha-Beta Pruning
+        if value == -1:
+            return ((action), value)
+
         min_results.append((action,value[1]))
 
     #Return the best action
